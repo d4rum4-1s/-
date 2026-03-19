@@ -2,37 +2,30 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <title>iLiFE! ログイン補助</title>
+    <title>iLiFE! チケット補助</title>
     <style>
         body { font-family: sans-serif; text-align: center; padding: 40px; background: #fdf2f8; }
-        .card { background: white; padding: 20px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); display: inline-block; max-width: 400px; }
-        .step { text-align: left; margin-bottom: 20px; font-size: 0.9rem; }
-        .btn-copy { background: #e91e63; color: white; border: none; padding: 12px 20px; border-radius: 5px; cursor: pointer; font-weight: bold; width: 100%; }
+        .card { background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); display: inline-block; }
+        .btn { padding: 15px 25px; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; width: 250px; margin: 10px; font-size: 1rem; }
+        .btn-login { background: #ff4081; color: white; }
+        .btn-apply { background: #4caf50; color: white; }
+        p { font-size: 0.8rem; color: #666; }
     </style>
 </head>
 <body>
 
 <div class="card">
-    <h2>iLiFE! チケット自動化</h2>
+    <h2>iLiFE! 作業ランチャー</h2>
     
-    <div class="step">
-        <p><strong>① 準備:</strong> 下のボタンを押してコードをコピー</p>
-        <button class="btn-copy" onclick="copyCode()">魔法のコードをコピー</button>
-    </div>
+    <p>ステップ①：まずログインを済ませる</p>
+    <button class="btn btn-login" onclick="window.open('https://heroines.jp/topics/members/ilife/awt8gdpomrxnc42u.html', '_blank')">1. FCにログイン</button>
 
-    <div class="step">
-        <p><strong>② 実行:</strong> ログイン画面（別タブで開きます）で、アドレスバーに <b>javascript:</b> と打ってから貼り付けてEnter！</p>
-    </div>
+    <p>ステップ②：ログイン完了後、ここに戻って押す</p>
+    <form action="https://eplus.jp/sf/detail/3302690001" method="GET" target="_blank" rel="noreferrer">
+        <input type="hidden" name="P6" value="776">
+        <button type="submit" class="btn btn-apply">2. 申し込みページへ</button>
+    </form>
 </div>
-
-<script>
-    function copyCode() {
-        const code = "document.body.innerHTML = '<div style=\"text-align:center;padding:50px;\"><h1>ログイン確認完了</h1><a href=\"https://eplus.jp/sf/detail/3302690001?P6=776\" style=\"padding:20px;background:#28a745;color:white;text-decoration:none;font-size:24px;border-radius:10px;\">申し込みへ(公式経由)</a></div>';";
-        navigator.clipboard.writeText(code);
-        alert("コピーしました！\nログイン画面を開きます。");
-        window.open("https://heroines.jp/topics/members/ilife/awt8gdpomrxnc42u.html", "_blank");
-    }
-</script>
 
 </body>
 </html>
