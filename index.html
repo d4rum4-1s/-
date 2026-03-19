@@ -2,45 +2,37 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>iLiFE!のチケット</title>
+    <title>iLiFE! ログイン補助</title>
     <style>
-        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; line-height: 1.5; padding: 20px; color: #333; }
-        .header { border-bottom: 2px solid #000; padding-bottom: 10px; margin-bottom: 20px; font-weight: bold; font-size: 1.2rem; }
-        h1 { font-size: 1.8rem; margin: 10px 0; }
-        .status-box { background: #fff; border: 1px solid #ddd; padding: 15px; border-radius: 4px; margin-bottom: 20px; }
-        /* ボタンの見た目を整える */
-        .btn-apply { background: #f0f0f0; border: 1px solid #999; padding: 5px 15px; border-radius: 3px; cursor: pointer; color: black; font-size: 0.9rem; display: inline-block; }
-        .btn-apply:hover { background: #e0e0e0; }
-        .footer-link { color: #0000ee; text-decoration: underline; font-size: 0.8rem; margin-top: 30px; display: block; }
-        .copyright { font-size: 0.8rem; color: #666; margin-top: 5px; }
+        body { font-family: sans-serif; text-align: center; padding: 40px; background: #fdf2f8; }
+        .card { background: white; padding: 20px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); display: inline-block; max-width: 400px; }
+        .step { text-align: left; margin-bottom: 20px; font-size: 0.9rem; }
+        .btn-copy { background: #e91e63; color: white; border: none; padding: 12px 20px; border-radius: 5px; cursor: pointer; font-weight: bold; width: 100%; }
     </style>
 </head>
 <body>
 
-    <div class="header">iLiFE! Zeppツアー「TRAVELiFE! 2026」</div>
-
-    <h1>ファンクラブ<br>加入状態の確認完了</h1>
-
-    <div class="status-box">
-        <p>ファンクラブ加入状態が確認できました。以下の導線からサービスをご利用ください。</p>
-        
-        <form action="https://eplus.jp/sf/detail/3302690001" method="GET" target="_blank" rel="noreferrer">
-            <input type="hidden" name="P6" value="776">
-            <button type="submit" class="btn-apply">申し込みへ</button>
-        </form>
+<div class="card">
+    <h2>iLiFE! チケット自動化</h2>
+    
+    <div class="step">
+        <p><strong>① 準備:</strong> 下のボタンを押してコードをコピー</p>
+        <button class="btn-copy" onclick="copyCode()">魔法のコードをコピー</button>
     </div>
 
-    <a href="#" class="footer-link">Membership Hubについて プライバシーポリシー</a>
-    <div class="copyright">© 2024 TwoGate inc.</div>
+    <div class="step">
+        <p><strong>② 実行:</strong> ログイン画面（別タブで開きます）で、アドレスバーに <b>javascript:</b> と打ってから貼り付けてEnter！</p>
+    </div>
+</div>
 
-    <script>
-        // ページをシークレットモードで開いた瞬間に、
-        // 同時に「ログイン用サイト」を別タブで開く自動命令
-        window.onload = function() {
-            window.open("https://heroines.jp/topics/members/ilife/awt8gdpomrxnc42u.html", "_blank");
-        }
-    </script>
+<script>
+    function copyCode() {
+        const code = "document.body.innerHTML = '<div style=\"text-align:center;padding:50px;\"><h1>ログイン確認完了</h1><a href=\"https://eplus.jp/sf/detail/3302690001?P6=776\" style=\"padding:20px;background:#28a745;color:white;text-decoration:none;font-size:24px;border-radius:10px;\">申し込みへ(公式経由)</a></div>';";
+        navigator.clipboard.writeText(code);
+        alert("コピーしました！\nログイン画面を開きます。");
+        window.open("https://heroines.jp/topics/members/ilife/awt8gdpomrxnc42u.html", "_blank");
+    }
+</script>
 
 </body>
 </html>
