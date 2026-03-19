@@ -2,30 +2,81 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <title>iLiFE! チケット補助</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iLiFE! 作業用ポータル</title>
     <style>
-        body { font-family: sans-serif; text-align: center; padding: 40px; background: #fdf2f8; }
-        .card { background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); display: inline-block; }
-        .btn { padding: 15px 25px; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; width: 250px; margin: 10px; font-size: 1rem; }
-        .btn-login { background: #ff4081; color: white; }
-        .btn-apply { background: #4caf50; color: white; }
-        p { font-size: 0.8rem; color: #666; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; text-align: center; padding: 30px; background: #fdf2f8; line-height: 1.5; }
+        .card { background: white; padding: 25px; border-radius: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.1); display: inline-block; width: 350px; }
+        .btn { padding: 14px; border: none; border-radius: 8px; cursor: pointer; font-weight: bold; width: 100%; margin: 10px 0; transition: 0.2s; font-size: 1rem; }
+        .btn:active { transform: scale(0.98); }
+        .btn-fc { background: #ff4081; color: white; }
+        .btn-ep { background: #4caf50; color: white; }
+        .input-group { margin-top: 20px; border-top: 1px dashed #ffc1d6; padding-top: 15px; }
+        .info-input { width: 90%; padding: 10px; margin-bottom: 8px; border: 1px solid #ddd; border-radius: 6px; background: #f9f9f9; font-size: 0.9rem; color: #333; text-align: center; }
+        .copy-btn { background: #6c757d; color: white; padding: 10px; font-size: 0.85rem; }
+        p { font-size: 0.8rem; color: #888; margin: 5px 0; }
     </style>
 </head>
 <body>
 
 <div class="card">
-    <h2>iLiFE! 作業ランチャー</h2>
+    <h3 style="margin-top:0; color:#d81b60;">iLiFE! 業務ポータル</h3>
     
-    <p>ステップ①：まずログインを済ませる</p>
-    <button class="btn btn-login" onclick="window.open('https://heroines.jp/topics/members/ilife/awt8gdpomrxnc42u.html', '_blank')">1. FCにログイン</button>
+    <p>① まずログイン画面を開く</p>
+    <button class="btn btn-fc" onclick="openFC()">1. ログイン画面へ</button>
 
-    <p>ステップ②：ログイン完了後、ここに戻って押す</p>
-    <form action="https://eplus.jp/sf/detail/3302690001" method="GET" target="_blank" rel="noreferrer">
-        <input type="hidden" name="P6" value="776">
-        <button type="submit" class="btn btn-apply">2. 申し込みページへ</button>
-    </form>
+    <div class="input-group">
+        <p>② 情報をコピーして貼り付け</p>
+        <input type="text" id="myID" class="info-input" readonly>
+        <button class="btn copy-btn" onclick="copyID()">メールアドレスをコピー</button>
+        
+        <input type="password" id="myPW" class="info-input" readonly>
+        <button class="btn copy-btn" onclick="copyPW()">パスワードをコピー</button>
+    </div>
+
+    <div class="input-group">
+        <p>③ ログイン後にここを押す</p>
+        <button class="btn btn-ep" onclick="goToEplus()">2. 申し込みページを開く</button>
+    </div>
 </div>
+
+<script>
+    // 設定済みのログイン情報
+    const savedID = "hayzz48150@yahoo.co.jp";
+    const savedPW = "Qwer1234";
+
+    // 画面が読み込まれたら自動でセット
+    window.onload = () => {
+        document.getElementById('myID').value = savedID;
+        document.getElementById('myPW').value = savedPW;
+    };
+
+    function copyID() {
+        navigator.clipboard.writeText(document.getElementById('myID').value);
+        alert("メールアドレスをコピーしました。");
+    }
+
+    function copyPW() {
+        navigator.clipboard.writeText(document.getElementById('myPW').value);
+        alert("パスワードをコピーしました。");
+    }
+
+    function openFC() {
+        window.open('https://heroines.jp/topics/members/ilife/awt8gdpomrxnc42u.html', '_blank');
+    }
+
+    function goToEplus() {
+        const f = document.createElement('form');
+        f.method = 'GET';
+        f.action = 'https://eplus.jp/sf/detail/3302690001';
+        f.target = '_blank';
+        const i = document.createElement('input');
+        i.type = 'hidden'; i.name = 'P6'; i.value = '776';
+        f.appendChild(i);
+        document.body.appendChild(f);
+        f.submit();
+    }
+</script>
 
 </body>
 </html>
